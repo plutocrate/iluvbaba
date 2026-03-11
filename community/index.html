@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Community Maps - i❤️baba</title>
+  <meta name="description" content="Browse and play community-created levels for i❤️baba. Rate and share your favorites!">
+  
+  <link rel="stylesheet" href="/client/styles/main.css">
+</head>
+<body class="community-page">
+
+<div id="app">
+  <header id="game-header">
+    <div class="header-left">
+      <a href="/" class="logo">i❤️baba</a>
+      <nav>
+        <a href="/play">Play</a>
+        <a href="/editor">Editor</a>
+        <a href="/community" class="active">Community</a>
+      </nav>
+    </div>
+    <div class="header-right">
+      <div id="auth-nav"></div>
+    </div>
+  </header>
+
+  <div id="community-container">
+    <div id="community-header">
+      <h1>Community Maps</h1>
+      <div id="sort-controls">
+        <button class="sort-btn active" data-sort="top">⭐ Top Rated</button>
+        <button class="sort-btn" data-sort="trending">🔥 Trending</button>
+        <button class="sort-btn" data-sort="new">🆕 New</button>
+      </div>
+      <div id="search-bar">
+        <input type="text" id="search-input" placeholder="Search maps...">
+        <button id="search-btn" class="btn btn-sm">Search</button>
+      </div>
+    </div>
+
+    <div id="maps-grid"></div>
+    <div id="load-more">
+      <button id="load-more-btn" class="btn btn-outline">Load More</button>
+    </div>
+  </div>
+</div>
+
+<!-- Map play modal -->
+<div id="play-modal" class="modal hidden">
+  <div class="modal-content modal-large">
+    <div class="modal-header">
+      <h3 id="modal-map-title">Map Title</h3>
+      <span id="modal-map-author">by Author</span>
+      <button id="close-play-modal" class="btn-close">✕</button>
+    </div>
+    <div style="position:relative;display:inline-block;">
+      <canvas id="modal-canvas" style="display:block;"></canvas>
+      <div id="modal-win" class="modal-game-overlay hidden" style="background:rgba(0,0,0,0.75);">
+        <div style="text-align:center">
+          <div style="font-size:2rem;margin-bottom:8px">🎉 You Win!</div>
+          <button id="modal-restart-btn" class="btn btn-primary">Play Again</button>
+          <button class="btn btn-ghost" onclick="document.getElementById('close-play-modal').click()">Close</button>
+        </div>
+      </div>
+      <div id="modal-dead" class="modal-game-overlay hidden" style="background:rgba(0,0,0,0.75);">
+        <div style="text-align:center">
+          <div style="font-size:1.5rem;margin-bottom:8px">💀 Defeated</div>
+          <button id="modal-dead-restart-btn" class="btn btn-primary">Restart (R)</button>
+        </div>
+      </div>
+    </div>
+    <div id="modal-controls" style="margin-top:8px;font-size:12px;color:var(--grey);text-align:center">
+      <kbd>↑↓←→</kbd> / <kbd>WASD</kbd> Move &nbsp;•&nbsp; <kbd>Z</kbd> Undo &nbsp;•&nbsp; <kbd>R</kbd> Restart
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/client/js/communityMain.js"></script>
+</body>
+</html>

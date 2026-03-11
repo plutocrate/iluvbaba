@@ -1,0 +1,192 @@
+/* =========================================
+   Editor page styles
+   All class names match levelEditor.js
+   ========================================= */
+
+.editor-page body,
+.editor-page #app { height: 100vh; overflow: hidden; }
+
+.editor-page #app { display: flex; flex-direction: column; }
+
+#editor-layout {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* ── Palette sidebar ─────────────────────── */
+#editor-palette {
+  width: 170px;
+  flex-shrink: 0;
+  background: var(--bg2);
+  border-right: 2px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.pal-title {
+  padding: 13px 14px 10px;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dim);
+  border-bottom: 1px solid var(--line);
+  flex-shrink: 0;
+}
+
+.pal-heading {
+  padding: 9px 14px 5px;
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dim);
+  border-top: 1px solid var(--line);
+  margin-top: 2px;
+}
+
+.pal-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  padding: 8px 14px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  color: var(--silver);
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.1s;
+}
+.pal-item:hover    { background: var(--bg3); }
+.pal-item.selected { background: var(--amber); color: #000 !important; }
+.pal-item.selected .pal-dot { outline: 2px solid rgba(0,0,0,0.4); }
+
+.pal-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Text-type tinting when not selected */
+.pal-item[data-text-type="noun"]     { color: #7ab8f5; }
+.pal-item[data-text-type="verb"]     { color: #f5c842; }
+.pal-item[data-text-type="property"] { color: #5de898; }
+
+/* ── Editor main ─────────────────────────── */
+#editor-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* Toolbar */
+#editor-toolbar {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 14px;
+  background: var(--bg2);
+  border-bottom: 2px solid var(--amber);
+  flex-shrink: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+#editor-toolbar::-webkit-scrollbar { height: 0; }
+
+#level-title-input {
+  width: 150px;
+  height: 32px;
+  padding: 0 10px;
+  font-size: 13px;
+  flex-shrink: 0;
+  /* override full-width from main.css */
+  width: 150px !important;
+}
+
+.tb-num {
+  width: 46px !important;
+  height: 32px;
+  padding: 0 8px;
+  font-size: 13px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.tb-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--dim);
+  flex-shrink: 0;
+}
+
+.tb-sep {
+  width: 1px;
+  height: 22px;
+  background: var(--line2);
+  margin: 0 4px;
+  flex-shrink: 0;
+}
+
+#editor-toolbar .btn.active {
+  background: var(--amber);
+  border-color: var(--amber);
+  color: #000;
+}
+
+/* Canvas container — fills remaining space */
+#editor-canvas-container {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  min-height: 0;
+}
+
+#editor-canvas {
+  display: block;
+  cursor: crosshair;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+#editor-hint {
+  position: absolute;
+  bottom: 10px;
+  right: 12px;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--dim);
+  background: rgba(17,17,20,0.85);
+  padding: 4px 10px;
+  border: 1px solid var(--line);
+  pointer-events: none;
+  letter-spacing: 0.04em;
+}
+
+/* Publish button is disabled until the creator beats their own level */
+#publish-btn.btn-disabled,
+#publish-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: auto; /* keep so title tooltip shows */
+  filter: grayscale(0.5);
+}

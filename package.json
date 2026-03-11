@@ -1,0 +1,19 @@
+{
+  "name": "i-love-baba",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "server": "node server/index.js",
+    "start": "concurrently -n VITE,API -c cyan,yellow \"vite\" \"node server/index.js\"",
+    "build": "vite build",
+    "preview": "vite preview",
+    "setup": "npm install && cd server && npm install && cd .. && cp -n server/.env.example server/.env || true"
+  },
+  "devDependencies": {
+    "vite": "^5.4.0",
+    "concurrently": "^8.2.0",
+    "@vitejs/plugin-basic-ssl": "^1.1.0"
+  },
+  "description": "i\u2764\ufe0fbaba \u2014 Baba Is You fan game"
+}

@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Allow: /play
+Allow: /editor
+Allow: /community
+Disallow: /api/
+Disallow: /login
+Disallow: /register
+
+Sitemap: https://ruleisfun.game/sitemap.xml

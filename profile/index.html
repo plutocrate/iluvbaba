@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Profile — i❤️baba</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/client/styles/main.css">
+</head>
+<body class="play-page">
+<div id="app">
+  <header id="game-header">
+    <div class="header-left" style="display:flex;align-items:center;flex:1;gap:0">
+      <a href="/" class="logo">i❤️baba</a>
+      <nav>
+        <a href="/">Play</a>
+        <a href="/editor">Editor</a>
+        <a href="/community">Community</a>
+      </nav>
+    </div>
+    <div class="header-right">
+      <div id="auth-nav" style="display:flex;gap:8px;align-items:center;"></div>
+    </div>
+  </header>
+
+  <div style="max-width:680px;margin:40px auto;padding:0 20px">
+
+    <!-- Profile card -->
+    <div class="profile-card">
+      <div class="profile-avatar" id="avatar-letter">?</div>
+      <div>
+        <div style="font-size:1.4rem;font-weight:700;color:var(--white)" id="profile-username">Loading…</div>
+        <div style="font-size:12px;color:var(--grey);font-family:var(--mono)" id="profile-joined"></div>
+      </div>
+    </div>
+
+    <!-- Change password -->
+    <div class="profile-section">
+      <div class="profile-section-title">Change Password</div>
+      <div id="pw-msg" style="display:none;padding:10px 14px;border-radius:6px;font-size:13px;margin-bottom:14px"></div>
+      <div class="field" style="margin-bottom:12px">
+        <label class="field-label">Current Password</label>
+        <input type="password" id="pw-current" class="field-input" placeholder="Current password">
+      </div>
+      <div class="field" style="margin-bottom:12px">
+        <label class="field-label">New Password</label>
+        <input type="password" id="pw-new" class="field-input" placeholder="New password (min 6 chars)">
+      </div>
+      <div class="field" style="margin-bottom:16px">
+        <label class="field-label">Confirm New Password</label>
+        <input type="password" id="pw-confirm" class="field-input" placeholder="Confirm new password">
+      </div>
+      <button class="btn btn-primary" id="pw-save-btn">Save New Password</button>
+    </div>
+
+    <!-- My published maps -->
+    <div class="profile-section">
+      <div class="profile-section-title">My Published Maps</div>
+      <div id="my-maps-list"><div style="color:var(--grey);font-size:13px">Loading…</div></div>
+    </div>
+
+    <!-- Danger zone -->
+    <div style="text-align:right;margin-top:8px">
+      <button class="btn btn-sm btn-ghost" id="logout-profile-btn" style="color:var(--grey)">Log out</button>
+    </div>
+  </div>
+</div>
+<script type="module" src="/client/js/profileMain.js"></script>
+</body>
+</html>

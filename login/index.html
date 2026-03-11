@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log In — i❤️baba</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/client/styles/main.css">
+</head>
+<body class="auth-page">
+<div id="app">
+  <header id="game-header">
+    <div class="header-left" style="display:flex;align-items:center">
+      <a href="/" class="logo">i❤️baba</a>
+      <nav>
+        <a href="/">Play</a><a href="/editor">Editor</a><a href="/community">Community</a>
+      </nav>
+    </div>
+  </header>
+  <div class="auth-wrap">
+    <div class="auth-card">
+      <div class="auth-card-head"><h1>Log In</h1></div>
+      <div class="auth-card-body">
+        <div id="auth-error" class="auth-error"></div>
+        <div class="field">
+          <label class="field-label">Username</label>
+          <input type="text" id="username" autocomplete="username" placeholder="your username">
+        </div>
+        <div class="field">
+          <label class="field-label">Password</label>
+          <input type="password" id="password" autocomplete="current-password" placeholder="your password">
+        </div>
+        <button id="login-btn" class="btn btn-primary" style="width:100%;height:42px;font-size:13px;">Log In</button>
+        <div class="auth-link">No account? <a href="/register">Sign up</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="module">
+  import { api } from '/client/js/ui/apiClient.js';
+  const doLogin = async () => {
+    const errEl = document.getElementById('auth-error');
+    try {
+      await api.login(document.getElementById('username').value, document.getElementById('password').value);
+      window.location.href = new URLSearchParams(window.location.search).get('redirect') || '/';
+    } catch(e) { errEl.textContent = e.message; errEl.style.display = 'block'; }
+  };
+  document.getElementById('login-btn').addEventListener('click', doLogin);
+  document.addEventListener('keypress', e => { if(e.key==='Enter') doLogin(); });
+</script>
+</body>
+</html>
