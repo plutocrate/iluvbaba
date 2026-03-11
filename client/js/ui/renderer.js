@@ -54,7 +54,6 @@ export class Renderer {
     if (state === 'dead') this._banner('DEFEATED', '#e74c3c', T, W, H);
 
     // Rules HUD
-    this._rulesHUD(rules, T);
   }
 
   _drawObj(obj, frame, T) {
