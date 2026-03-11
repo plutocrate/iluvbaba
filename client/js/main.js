@@ -25,8 +25,8 @@ const voiceText    = document.getElementById('voice-status-text');
 const authNav      = document.getElementById('auth-nav');
 
 // ── Core objects ──────────────────────────────────────────────────────────────
-const engine   = new GameEngine();
-const renderer = new Renderer(canvas);
+const engine = new GameEngine();
+let renderer;
 
 let currentLevelIndex = 0;
 let frameCount = 0;
@@ -225,6 +225,7 @@ async function loadCommunityMap(id) {
 
 // ── Init ──────────────────────────────────────────────────────────────────────
 async function init() {
+  renderer = new Renderer(canvas);
   buildLevelList();
   updateAuthNav();
 

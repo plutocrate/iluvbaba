@@ -6,13 +6,11 @@
   <title>Level Editor — i❤️baba</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../client/styles/main.css">
-  <link rel="stylesheet" href="../client/styles/editor.css">
+  <link rel="stylesheet" href="/client/styles/main.css">
+  <link rel="stylesheet" href="/client/styles/editor.css">
 </head>
 <body class="editor-page">
 <div id="app">
-
-  <!-- Header -->
   <header id="game-header">
     <div class="header-left" style="display:flex;align-items:center;flex:1">
       <a href="/" class="logo">i❤️baba</a>
@@ -26,27 +24,19 @@
       <div id="auth-nav" style="display:flex;gap:8px;align-items:center;"></div>
     </div>
   </header>
-
-  <!-- Editor layout -->
   <div id="editor-layout">
-
-    <!-- Palette sidebar -->
     <aside id="editor-palette">
       <div class="pal-title">Objects</div>
       <div id="palette-items"></div>
     </aside>
-
-    <!-- Main area -->
     <main id="editor-main">
-
-      <!-- Toolbar -->
       <div id="editor-toolbar">
         <input id="level-title-input" type="text" placeholder="Level title…" value="My Level">
         <div class="tb-sep"></div>
         <span class="tb-label">W</span>
         <input id="width-input"  type="number" min="5" max="20" value="12" class="tb-num">
         <span class="tb-label">H</span>
-        <input id="height-input" type="number" min="5" max="20" value="9"  class="tb-num">
+        <input id="height-input" type="number" min="5" max="20" value="9" class="tb-num">
         <button id="resize-btn" class="btn btn-sm">Resize</button>
         <div class="tb-sep"></div>
         <button id="tool-place" class="btn btn-sm active" data-tool="place">✏ Place</button>
@@ -58,18 +48,13 @@
         <button id="import-btn"  class="btn btn-sm">Import JSON</button>
         <button id="publish-btn" class="btn btn-sm btn-primary">Publish</button>
       </div>
-
-      <!-- Canvas -->
       <div id="editor-canvas-container">
         <canvas id="editor-canvas"></canvas>
         <div id="editor-hint">Left-click: place &nbsp;•&nbsp; Right-click: erase &nbsp;•&nbsp; Drag: paint</div>
       </div>
-
     </main>
   </div>
 </div>
-
-<!-- Import modal -->
 <div id="import-modal" class="modal hidden">
   <div class="modal-box">
     <h3>Import Level JSON</h3>
@@ -80,15 +65,13 @@
     </div>
   </div>
 </div>
-
-<!-- Publish modal -->
 <div id="publish-modal" class="modal hidden">
   <div class="modal-box">
     <h3>Publish Level</h3>
     <div id="publish-auth-required" class="hidden" style="margin-bottom:16px">
       <p style="color:var(--grey);margin-bottom:12px">You must be logged in to publish.</p>
       <div style="display:flex;gap:8px">
-        <a href="/login"    class="btn btn-primary">Log in</a>
+        <a href="/login" class="btn btn-primary">Log in</a>
         <a href="/register" class="btn btn-ghost">Sign up</a>
       </div>
     </div>
@@ -104,7 +87,6 @@
     </div>
   </div>
 </div>
-
-<script type="module" src="../client/js/editorMain.js"></script>
+<script type="module" src="/client/js/editorMain.js"></script>
 </body>
 </html>

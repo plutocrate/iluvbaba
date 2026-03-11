@@ -72,16 +72,7 @@ app.get('/api/health', (_req, res) => res.json({ status: 'ok', redis: !!redisCli
 const distDir = path.join(__dirname, '../dist');
 if (fs.existsSync(distDir)) {
   app.use(express.static(distDir));
-  const pages = {
-    '/': 'index.html', '/play': 'index.html',
-    '/editor': 'editor/index.html', '/community': 'community/index.html',
-    '/login': 'login/index.html', '/register': 'register/index.html', '/profile': 'profile/index.html',
-    '/profile':  'profile/index.html', '/profile': 'profile/index.html',
-    '/profile': 'profile/index.html',
-  };
-  for (const [route, file] of Object.entries(pages)) {
-    app.get(route, (_req, res) => res.sendFile(path.join(distDir, file)));
-  }
+  // SPA: serve index.html for all non-API routes
   app.use((_req, res) => res.sendFile(path.join(distDir, 'index.html')));
 }
 

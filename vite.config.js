@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import basicSsl from '@vitejs/plugin-basic-ssl';
 
+// Dev only: map /editor → /editor/index.html etc (no trailing slash needed)
 function mpaCleanUrls() {
   const routes = ['editor', 'community', 'login', 'register', 'profile'];
   return {
@@ -24,6 +25,7 @@ export default defineConfig({
     proxy: { '/api': { target: 'http://localhost:3001', changeOrigin: true } },
   },
   build: {
+    outDir: 'dist',
     rollupOptions: {
       input: {
         main:      'index.html',
@@ -34,6 +36,5 @@ export default defineConfig({
         profile:   'profile/index.html',
       },
     },
-    outDir: 'dist',
   },
 });

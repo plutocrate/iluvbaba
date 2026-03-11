@@ -1,9 +1,0 @@
-node_modules/
-server/node_modules/
-dist/
-.env
-server/.env
-*.log
-.DS_Store
-.dev-cert.pem
-.dev-key.pem
