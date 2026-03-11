@@ -74,39 +74,10 @@ document.getElementById('import-cancel').addEventListener('click', () => {
   document.getElementById('import-modal').classList.add('hidden');
 });
 
-// ── Publish gating: require the creator to beat their own level first ─────────
+// Publish always enabled
 const publishBtn = document.getElementById('publish-btn');
-
-function hasTestedAndWon() {
-  return sessionStorage.getItem('testLevelWon') === '1';
-}
-
-function updatePublishBtn() {
-  if (hasTestedAndWon()) {
-    publishBtn.disabled = false;
-    publishBtn.title    = '';
-    publishBtn.classList.remove('btn-disabled');
-  } else {
-    publishBtn.disabled = true;
-    publishBtn.title    = 'You must play and beat your level before publishing';
-    publishBtn.classList.add('btn-disabled');
-  }
-}
-
-// Reset publish gate whenever Test is clicked (testLevel() clears the flag)
-document.getElementById('test-btn').addEventListener('click', () => {
-  updatePublishBtn();
-});
-
-// Also reset when user edits the map (clear button, resize, palette clicks)
-['clear-btn', 'resize-btn'].forEach(id => {
-  document.getElementById(id)?.addEventListener('click', () => {
-    sessionStorage.removeItem('testLevelWon');
-    updatePublishBtn();
-  });
-});
-
-updatePublishBtn(); // Set initial state on page load
+publishBtn.disabled = false;
+publishBtn.classList.remove('btn-disabled');
 
 document.getElementById('publish-btn').addEventListener('click', () => {
   const modal = document.getElementById('publish-modal');
