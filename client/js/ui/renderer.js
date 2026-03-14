@@ -24,13 +24,13 @@ export class Renderer {
     const { tileSize: T, levelWidth: W, levelHeight: H } = this;
 
     // Clear
-    ctx.fillStyle = '#111114';
+    ctx.fillStyle = '#09090b';
     ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
     // Grid background
     for (let y = 0; y < H; y++) {
       for (let x = 0; x < W; x++) {
-        ctx.fillStyle = (x + y) % 2 === 0 ? '#14141a' : '#121218';
+        ctx.fillStyle = (x + y) % 2 === 0 ? '#0d0d14' : '#0b0b11';
         ctx.fillRect(x * T, y * T, T, T);
       }
     }
@@ -50,8 +50,8 @@ export class Renderer {
     for (const obj of sorted) this._drawObj(obj, frame, T);
 
     // Overlays
-    if (state === 'won')  this._banner('YOU WIN!', '#f5a623', T, W, H);
-    if (state === 'dead') this._banner('DEFEATED', '#e74c3c', T, W, H);
+    if (state === 'won')  this._banner('YOU WIN!', '#a78bfa', T, W, H);
+    if (state === 'dead') this._banner('DEFEATED', '#ef4444', T, W, H);
 
     // Rules HUD
   }
@@ -84,8 +84,8 @@ export class Renderer {
     const tt  = obj.textType;
 
     // Colors
-    const BG   = tt === 'noun' ? '#0a1a36' : tt === 'verb' ? '#2a1800' : '#0a2210';
-    const BD   = tt === 'noun' ? '#4c9fef' : tt === 'verb' ? '#f5a623' : '#2ecc71';
+    const BG   = tt === 'noun' ? '#0c1a38' : tt === 'verb' ? '#1a1000' : '#081a10';
+    const BD   = tt === 'noun' ? '#3b82f6' : tt === 'verb' ? '#f59e0b' : '#22c55e';
     const FG   = '#ffffff';
 
     // Block dimensions: leave 4px margin each side
@@ -111,12 +111,12 @@ export class Renderer {
     let fontSize = Math.floor(innerH * 0.85);
     fontSize = Math.max(8, Math.min(fontSize, T * 0.5));
 
-    ctx.font = `700 ${fontSize}px 'Space Mono', monospace`;
+    ctx.font = `700 ${fontSize}px 'DM Mono', monospace`;
     // Scale down if text overflows width
     let tw = ctx.measureText(txt).width;
     while (tw > innerW && fontSize > 7) {
       fontSize -= 1;
-      ctx.font = `700 ${fontSize}px 'Space Mono', monospace`;
+      ctx.font = `700 ${fontSize}px 'DM Mono', monospace`;
       tw = ctx.measureText(txt).width;
     }
 
@@ -196,8 +196,8 @@ export class Renderer {
         ctx.beginPath(); ctx.moveTo(-r*.1,-r); ctx.lineTo(-r*.1,r); ctx.stroke();
         // Flag triangle (slight wave)
         const wave = Math.sin(frame*0.08+id)*r*0.08;
-        ctx.fillStyle = '#f5a623';
-        ctx.strokeStyle = '#cc7700';
+        ctx.fillStyle = '#8b5cf6';
+        ctx.strokeStyle = '#6d28d9';
         ctx.lineWidth = 1.5;
         ctx.beginPath();
         ctx.moveTo(-r*.1, -r);
@@ -297,29 +297,29 @@ export class Renderer {
     const ph     = padY * 2 + 14 + lines * lh + (rules.length > 8 ? lh : 0);
 
     // Panel
-    ctx.fillStyle = 'rgba(17,17,20,0.92)';
+    ctx.fillStyle = 'rgba(9,9,11,0.94)';
     ctx.fillRect(8, 8, pw, ph);
-    ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+    ctx.strokeStyle = 'rgba(255,255,255,0.08)';
     ctx.lineWidth = 1;
     ctx.strokeRect(8, 8, pw, ph);
-    // Amber accent top
-    ctx.fillStyle = '#f5a623';
-    ctx.fillRect(8, 8, pw, 3);
+    // Violet accent top
+    ctx.fillStyle = '#7c3aed';
+    ctx.fillRect(8, 8, pw, 2);
 
     // Header
-    ctx.font = `700 ${Math.max(9,fs-1)}px 'Space Mono', monospace`;
-    ctx.fillStyle = 'rgba(255,255,255,0.35)';
+    ctx.font = `700 ${Math.max(9,fs-1)}px 'DM Mono', monospace`;
+    ctx.fillStyle = 'rgba(255,255,255,0.28)';
     ctx.textAlign = 'left';
     ctx.fillText('ACTIVE RULES', 8 + padX, 8 + padY + 10);
 
     // Rules
-    ctx.font = `700 ${fs}px 'Space Mono', monospace`;
+    ctx.font = `700 ${fs}px 'DM Mono', monospace`;
     for (let i = 0; i < lines; i++) {
       const rule = rules[i];
       const y = 8 + padY + 14 + 4 + (i + 1) * lh;
-      ctx.fillStyle = '#4c9fef'; ctx.fillText(rule.subject,            8 + padX,            y);
-      ctx.fillStyle = '#f5a623'; ctx.fillText(rule.verb,               8 + padX + colW,     y);
-      ctx.fillStyle = rule.type === 'property' ? '#2ecc71' : '#4c9fef';
+      ctx.fillStyle = '#3b82f6'; ctx.fillText(rule.subject,            8 + padX,            y);
+      ctx.fillStyle = '#f59e0b'; ctx.fillText(rule.verb,               8 + padX + colW,     y);
+      ctx.fillStyle = rule.type === 'property' ? '#22c55e' : '#3b82f6';
                                  ctx.fillText(rule.object,             8 + padX + colW * 2, y);
     }
     if (rules.length > 8) {
@@ -335,14 +335,14 @@ export class Renderer {
     const bh = Math.max(60, T * 1.2);
     const fs = Math.max(24, bh * 0.45);
 
-    ctx.fillStyle = 'rgba(17,17,20,0.9)';
+    ctx.fillStyle = 'rgba(9,9,11,0.92)';
     ctx.fillRect(cx - 180, cy - bh/2, 360, bh);
-    ctx.strokeStyle = color; ctx.lineWidth = 3;
+    ctx.strokeStyle = color; ctx.lineWidth = 2;
     ctx.strokeRect(cx - 180, cy - bh/2, 360, bh);
-    ctx.fillStyle = color; ctx.fillRect(cx - 180, cy - bh/2, 360, 4);
+    ctx.fillStyle = color; ctx.fillRect(cx - 180, cy - bh/2, 360, 2);
 
     ctx.fillStyle = color;
-    ctx.font = `900 ${fs}px 'Outfit', sans-serif`;
+    ctx.font = `700 ${fs}px 'DM Sans', sans-serif`;
     ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
     ctx.fillText(text, cx, cy + 2);
   }

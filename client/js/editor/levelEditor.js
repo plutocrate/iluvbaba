@@ -14,7 +14,7 @@ const PALETTE = [
   { id:'BABA',  isText:false, label:'Baba',   color:'#e8dfd0' },
   { id:'ROCK',  isText:false, label:'Rock',   color:'#7a6e5e' },
   { id:'WALL',  isText:false, label:'Wall',   color:'#3d4b5c' },
-  { id:'FLAG',  isText:false, label:'Flag',   color:'#f5a623' },
+  { id:'FLAG',  isText:false, label:'Flag',   color:'#8b5cf6' },
   { id:'LAVA',  isText:false, label:'Lava',   color:'#cc3300' },
   { id:'WATER', isText:false, label:'Water',  color:'#1a6eb5' },
   { id:'KEKE',  isText:false, label:'Keke',   color:'#d45c00' },
@@ -111,7 +111,7 @@ export class LevelEditor {
         const dot = document.createElement('span');
         dot.className = 'pal-dot';
         const dotColor = item.isText
-          ? (item.textType === 'noun' ? '#4c9fef' : item.textType === 'verb' ? '#f5a623' : '#2ecc71')
+          ? (item.textType === 'noun' ? '#3b82f6' : item.textType === 'verb' ? '#f59e0b' : '#22c55e')
           : (item.color || '#888');
         dot.style.background = dotColor;
 

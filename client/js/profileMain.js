@@ -82,8 +82,8 @@ document.getElementById('pw-save-btn').addEventListener('click', async () => {
     msg.textContent = text;
     msg.style.display = 'block';
     msg.style.background = ok ? 'rgba(46,204,113,.15)' : 'rgba(220,50,50,.15)';
-    msg.style.color = ok ? '#2ecc71' : '#e74c3c';
-    msg.style.border = `1px solid ${ok ? '#2ecc71' : '#e74c3c'}`;
+    msg.style.color = ok ? '#22c55e' : '#ef4444';
+    msg.style.border = `1px solid ${ok ? '#22c55e' : '#ef4444'}`;
   };
 
   if (!current || !next || !confirm) return show('All fields are required', false);
